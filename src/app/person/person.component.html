@@ -1,0 +1,82 @@
+<div class="container">
+    <h1 class="text-center">
+        Enter Your Information
+    </h1>
+
+    <form [formGroup]="personForm" class="row">
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="first name here" formControlName="firstName">
+            <mat-error *ngIf="personForm.get('firstName')!.errors!==null && personForm.get('firstName')!.errors!['required']">
+                First Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Middle Name</mat-label>
+            <input matInput type="text" placeholder="middle name here" formControlName="middleName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" placeholder="Last name here" formControlName="lastName">
+            <mat-error *ngIf="personForm.get('lastName')!.errors!==null && personForm.get('lastName')!.errors!['required']">
+                Last name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="dept">
+                <mat-option value="IT">IT</mat-option>
+                <mat-option value="HR">HR</mat-option>
+                <mat-option value="Payroll">Payroll</mat-option>
+                <mat-option value="Networking">Networking</mat-option>
+                <mat-option value="Admin">Admin</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput type="date" formControlName="dob">
+            <mat-error *ngIf="personForm.get('dob')!.errors!==null && personForm.get('dob')!.errors!['required']">
+                Date of Birth cannot be Empty
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-8">
+            <mat-label>Address 1</mat-label>
+            <input matInput type="text" placeholder="address here" formControlName="address1">
+            <mat-error *ngIf="personForm.get('address1')!.errors!==null && personForm.get('address1')!.errors!['required']">
+                Address 1 is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>Pincode</mat-label>
+            <input matInput type="text" placeholder="Pincode here" formControlName="pincode">
+            <mat-error *ngIf="personForm.get('pincode')!.errors!==null && personForm.get('pincode')!.errors!['required']">
+                Pincode is required
+            </mat-error>
+            <mat-error *ngIf="personForm.get('pincode')!.errors!==null && (personForm.get('pincode')!.errors!['minlength'] || personForm.get('pincode')!.errors!['invalidPincode'] || personForm.get('pincode')!.errors!['maxlength'])">
+                Pincode is invalid
+            </mat-error>
+        </mat-form-field>
+
+        <div class="col-md-12">
+            <button mat-raised-button color="primary" class="col-md-auto" (click)="submit()">Save</button>
+        </div>
+
+
+
+    </form>
+</div>
